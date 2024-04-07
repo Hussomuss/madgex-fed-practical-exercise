@@ -1,0 +1,29 @@
+{# filter.njk #}
+{% macro filterComponent(taxonomy) %}
+  <div class="taxonomy-container mds-grid-col-12 mds-grid-col-lg-3">
+    <div class="filter-title">
+      <h2 class="filter-title-size">Filter Jobs</h2>
+    </div>
+    <ul>
+      {% for category in taxonomy %}
+        {% if category.names.length > 0 and category.terms.length > 0 %} 
+          <li class="list-items">
+            <details>
+              <summary class="taxonomy-summary">{{ category.names[0].value }}</summary>
+              <ul class="taxonomy-list">
+                {% for term in category.terms %}
+                  <li class="taxonomy-list-item">
+                    <span class="term-names">
+                      {{ term.names[0].value }} 
+                    </span>
+                    ({{ term.count }})
+                  </li>
+                {% endfor %}
+              </ul> 
+            </details>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endmacro %}

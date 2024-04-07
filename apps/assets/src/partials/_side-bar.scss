@@ -1,0 +1,78 @@
+$primary-color: #149ad9;
+$border-color: #ddd;
+
+.taxonomy-container {
+  background: #fff;
+  border: 1px solid $border-color;
+  margin: 0;
+  padding: 0;
+  height: fit-content;
+  border-radius: 4px;
+}
+
+.filter-title {
+  border-bottom: 1px solid $border-color;
+  padding-left: 20px;
+
+  &-size {
+    font-weight: 400;
+    color: $primary-color;
+  }
+}
+
+.list-items:not(:last-child) {
+  border-bottom: 1px solid $border-color;
+}
+
+.taxonomy-summary {
+  padding: 20px;
+  color: $primary-color;
+  font-weight: 500;
+}
+
+.taxonomy-list {
+  margin-bottom: 26px;
+  padding-left: 20px;
+}
+
+.taxonomy-list-item {
+  margin-left: 26px;
+  margin-bottom: 10px;
+}
+
+.term-names {
+  color: $primary-color;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+// arrow icons
+
+summary {
+    list-style-type: none;
+    background-color: transparent;
+    padding-left: 20px;
+    position: relative;
+    margin-left: 20px;
+    cursor: pointer;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23149ad9' class='bi bi-chevron-right' viewBox='0 0 16 16'%3E%3Cpath fill='%23149ad9' d='M11.354 8l-4.146 4.146a.5.5 0 0 1-.708-.708l3.646-3.647-3.646-3.647a.5.5 0 0 1 .708-.708L11.354 8z' stroke='%23149ad9' stroke-width='0.8'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+  }
+  
+  details[open] > summary::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+  }
