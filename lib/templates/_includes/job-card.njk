@@ -14,7 +14,9 @@
       <div class="mds-grid-row mds-grid-bottom mds-grid-top-md">
         <div class="mds-grid-col-8 mds-grid-col-md-9">
           <ul class="mds-list">
-            <li class="mds-list__item">{{ job.employer }}</li>
+             {% if job.recruiter.name -%}
+              <li class="mds-list__item">{{ job.recruiter.name }}</li>
+            {%- endif %}
             {% if job.locationDescription -%}
               <li class="mds-list__item">{{ job.locationDescription }}</li>
             {%- endif %}
@@ -22,7 +24,48 @@
               <li class="mds-list__item">{{ job.salaryDescription }}</li>
             {%- endif %}
           </ul>
-          <p>{{ job.summary }}</p>
+
+<p>
+  {% set max_length = 250 %} {# Define the maximum length of the summary #}
+  {% set summary = job.summary %}
+  {% if summary.length > max_length %}
+    {% set truncated_summary = summary.slice(0, max_length) %}
+    <span id="truncated_summary" style="white-space: pre-line;">{{ truncated_summary }}</span><span id="ellipsis" style="display:none">...</span>
+    <span id="full_summary" style="display:none; white-space: pre-line;">{{ summary }}</span>
+    <a href="javascript:void(0)" id="read-more-link" style="white-space: nowrap;">Read more</a>
+    <a href="javascript:void(0)" id="read-less-link" style="display: none;">Read less</a>
+  {% else %}
+    {{ summary }}
+  {% endif %}
+</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var truncatedSummary = document.getElementById("truncated_summary");
+  var fullSummary = document.getElementById("full_summary");
+  var ellipsis = document.getElementById("ellipsis");
+  var readMoreLink = document.getElementById("read-more-link");
+  var readLessLink = document.getElementById("read-less-link");
+  
+  readMoreLink.addEventListener("click", function() {
+    truncatedSummary.style.display = "none";
+    ellipsis.style.display = "none";
+    fullSummary.style.display = "inline";
+    readMoreLink.style.display = "none";
+    readLessLink.style.display = "inline";
+  });
+  
+  readLessLink.addEventListener("click", function() {
+    truncatedSummary.style.display = "inline";
+    ellipsis.style.display = "inline";
+    fullSummary.style.display = "none";
+    readMoreLink.style.display = "inline";
+    readLessLink.style.display = "none";
+  });
+});
+</script>
+
+
           <a href="#" class="mds-button mds-button--neutral" aria-label="View details about {{ job.title }}">View details</a>
         </div>
         <div class="mds-grid-col-4 mds-grid-col-md-3 mds-text-align-right">

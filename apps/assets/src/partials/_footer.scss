@@ -1,0 +1,30 @@
+$primary-color: #149ad9;
+$secondary-color: #fff;
+
+.footer-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
+  max-width: 1260px;
+}
+
+.footer-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .footer-link {
+    transition: color 0.7s;
+    color: $secondary-color;
+
+    &:hover {
+      text-decoration: none;
+      color: $primary-color;
+    }
+
+    &.active {
+      text-decoration: none;
+    }
+  }
+}

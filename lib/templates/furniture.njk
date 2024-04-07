@@ -22,7 +22,7 @@
       <div class="mds-skip-to-content">
         <a class="mds-skip-to-content__link" accesskey="S" title="Access key: S" href="#main">Skip to main content</a>
       </div>
-      <header>header</header>
+      {% include "header.njk" %}
       <main id="main">
         <div class="wrapper">
           {% block main %}
@@ -30,7 +30,7 @@
           {% endblock %}
         </div>
       </main>
-      <footer>footer</footer>
+      {% include "footer.njk" %}
     </div>
   </body>
 </html>
