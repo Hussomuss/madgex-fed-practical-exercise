@@ -26,7 +26,7 @@
           </ul>
 
 <p>
-  {% set max_length = 250 %} {# Define the maximum length of the summary #}
+  {% set max_length = 250 %} 
   {% set summary = job.summary %}
   {% if summary.length > max_length %}
     {% set truncated_summary = summary.slice(0, max_length) %}
@@ -64,8 +64,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
-
           <a href="#" class="mds-button mds-button--neutral" aria-label="View details about {{ job.title }}">View details</a>
         </div>
         <div class="mds-grid-col-4 mds-grid-col-md-3 mds-text-align-right">
